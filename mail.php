@@ -6,7 +6,7 @@ header('Access-Control-Allow-Origin: *');
 $json = file_get_contents('php://input');
 $obj = json_decode($json);
 
-echo "Getting input"
+echo ("Getting input");
 
 $mail = new PHPMailer;
 
@@ -35,7 +35,7 @@ $mail->Subject = $obj["subject"];
 $mail->Body    = $obj["body"];
 $mail->AltBody = $obj["body"];
 
-echo "Trying to send"
+echo ("Trying to send");
 
 if (!$mail->send()) {
     echo 'Message could not be sent.';
