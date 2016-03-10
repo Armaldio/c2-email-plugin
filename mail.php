@@ -6,8 +6,6 @@ header('Access-Control-Allow-Origin: *');
 $json = file_get_contents('php://input');
 $obj = json_decode($json);
 
-//echo($obj->smtp_server);
-
 $mail = new PHPMailer;
 
 $mail->SMTPDebug = 3;                               // Enable verbose debug output
@@ -36,8 +34,11 @@ $mail->Body    = $obj->body;
 $mail->AltBody = $obj->body;
 
 if (!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
+	if ($obj->debug == true)
+	{
+		echo 'Message could not be sent.';
+		echo 'Error: ' . $mail->ErrorInfo;	
+	}		
 } else {
     echo 'OK';
 }
