@@ -1,6 +1,8 @@
 <?php
 require 'phpmailer/PHPMailerAutoload.php';
 
+header('Access-Control-Allow-Origin: *');
+
 echo "Loaded\n";
 
 $json = file_get_contents('php://input');
