@@ -33,7 +33,7 @@ $mail->Subject = $obj->subject;
 $mail->Body    = $obj->body;
 $mail->AltBody = $obj->body;
 
-echo($obj->debug);
+var_dump($obj);
 
 if (!$mail->send()) {
 	if ($obj->debug == true)
