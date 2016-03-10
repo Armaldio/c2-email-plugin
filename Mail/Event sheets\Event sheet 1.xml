@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <event-block sid="7343317307531506">
+            <conditions>
+                <condition id="0" name="On clicked" sid="3216588697605812" type="Button" />
+            </conditions>
+            <actions>
+                <action id="-27" name="Snapshot canvas" sid="8387296028336518" type="System">
+                    <param id="0" name="Format">0</param>
+                    <param id="1" name="JPEG quality">75</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4853015879239821">
+            <conditions>
+                <condition id="-26" name="On canvas snapshot" sid="2908511995476946" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Send a mail" sid="26203522346674" type="Mail">
+                    <param id="0" name="From (e-mail adress)">&quot;armaldio@gmail.com&quot;</param>
+                    <param id="1" name="From (name)">&quot;Quentin&quot;</param>
+                    <param id="2" name="To (e-mail adress)">&quot;quentin.goinaud@gmail.com&quot;</param>
+                    <param id="3" name="Subject">&quot;Hello&quot;</param>
+                    <param id="4" name="Body (html)">&quot;Bonjour lol&quot;</param>
+                    <param id="5" name="Attachment fileName">&quot;Test.png&quot;</param>
+                    <param id="6" name="Attachment in base64">tokenat(CanvasSnapshot, 1, &quot;,&quot;)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6907557096101717">
+            <conditions>
+                <condition id="1" name="On mail fail" sid="204862556857645" type="Mail" />
+            </conditions>
+            <actions>
+                <action id="0" name="Alert" sid="3402236368822642" type="Browser">
+                    <param id="0" name="Message">&quot;Oh no, it fails :(&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6075309322840979">
+            <conditions>
+                <condition id="0" name="On mail sent" sid="8888671990011564" type="Mail" />
+            </conditions>
+            <actions>
+                <action id="0" name="Alert" sid="1624989341194665" type="Browser">
+                    <param id="0" name="Message">&quot;Youhou :D&quot; &amp;newline &amp; &quot;It worked :)&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
