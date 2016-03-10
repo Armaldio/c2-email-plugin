@@ -8,7 +8,7 @@ $obj = json_decode($json);
 
 $mail = new PHPMailer;
 
-$mail->SMTPDebug = 2;                               // Enable verbose debug output
+$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
 echo ($obj["smtp_server"]);
 
