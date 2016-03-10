@@ -8,6 +8,8 @@ $obj = json_decode($json);
 
 var_dump($obj);
 
+echo($obj->smtp_server);
+
 /*
 $mail = new PHPMailer;
 
