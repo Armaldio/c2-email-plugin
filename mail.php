@@ -10,14 +10,6 @@ $mail = new PHPMailer;
 
 $mail->SMTPDebug = 3;                               // Enable verbose debug output
 
-echo ("Server".$obj["smtp_server"]);
-echo ("\n");
-
-echo ("All : ")
-var_dump($obj);
-
-echo ("\n");
-
 $mail->isSMTP();                                      // Set mailer to use SMTP
 $mail->Host = $obj["smtp_server"];  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
