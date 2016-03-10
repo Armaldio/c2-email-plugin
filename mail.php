@@ -13,6 +13,7 @@ $mail->SMTPDebug = 3;                               // Enable verbose debug outp
 echo ("Server".$obj["smtp_server"]);
 echo ("\n");
 
+echo ("All : ")
 var_dump($obj);
 
 echo ("\n");
