@@ -6,6 +6,10 @@ header('Access-Control-Allow-Origin: *');
 $json = file_get_contents('php://input');
 $obj = json_decode($json);
 
+echo($obj);
+var_dump($obj);
+
+/*
 $mail = new PHPMailer;
 
 $mail->SMTPDebug = 3;                               // Enable verbose debug output
@@ -39,3 +43,4 @@ if (!$mail->send()) {
 } else {
     echo 'OK';
 }
+*/
