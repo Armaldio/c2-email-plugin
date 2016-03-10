@@ -41,4 +41,3 @@ if (!$mail->send()) {
 } else {
     echo 'OK';
 }
-*/
