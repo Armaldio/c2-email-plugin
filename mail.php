@@ -15,7 +15,7 @@ $mail->Host = $obj->smtp_server;  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
 $mail->Username = $obj->from_mail;                 // SMTP username
 $mail->Password = $obj->password;                           // SMTP password
-$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+$mail->SMTPSecure = $obj->security;                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = $obj->port;                                    // TCP port to connect to
 
 $mail->setFrom($obj->from_mail, $obj->name_from);
