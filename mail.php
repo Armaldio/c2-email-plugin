@@ -6,9 +6,9 @@ header('Access-Control-Allow-Origin: *');
 $json = file_get_contents('php://input');
 $obj = json_decode($json);
 
-var_dump($obj);
-
 echo($obj->smtp_server);
+
+//var_dump($obj);
 
 /*
 $mail = new PHPMailer;
