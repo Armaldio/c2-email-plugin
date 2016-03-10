@@ -20,13 +20,17 @@
             </conditions>
             <actions>
                 <action id="0" name="Send a mail" sid="26203522346674" type="Mail">
-                    <param id="0" name="From (e-mail adress)">&quot;armaldio@gmail.com&quot;</param>
-                    <param id="1" name="From (name)">&quot;Quentin&quot;</param>
-                    <param id="2" name="To (e-mail adress)">&quot;quentin.goinaud@gmail.com&quot;</param>
-                    <param id="3" name="Subject">&quot;Hello&quot;</param>
-                    <param id="4" name="Body (html)">&quot;Bonjour lol&quot;</param>
-                    <param id="5" name="Attachment fileName">&quot;Test.png&quot;</param>
-                    <param id="6" name="Attachment in base64">tokenat(CanvasSnapshot, 1, &quot;,&quot;)</param>
+                    <param id="0" name="SMTP server (ex : smtp.gmail.com)">&quot;smtp.google.com&quot;</param>
+                    <param id="1" name="Port (ex: 587)">587</param>
+                    <param id="2" name="Password">&quot;geek456AbC123&quot;</param>
+                    <param id="3" name="From (e-mail adress) / username">&quot;quentin.goinaud@gmail.com&quot;</param>
+                    <param id="4" name="From (name)">&quot;Quentin&quot;</param>
+                    <param id="5" name="To (e-mail adress)">&quot;armaldio@gmail.com&quot;</param>
+                    <param id="6" name="Subject">&quot;Hello&quot;</param>
+                    <param id="7" name="Body (html)">&quot;Bonjour lol&quot;</param>
+                    <param id="8" name="Attachment fileName">&quot;&quot;</param>
+                    <param id="9" name="Attachment in base64">&quot;&quot;</param>
+                    <param id="10" name="Debug :">1</param>
                 </action>
             </actions>
         </event-block>
