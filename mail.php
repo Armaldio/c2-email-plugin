@@ -25,8 +25,7 @@ $mail->addAddress($obj->recipient, $obj->recipient);     // Add a recipient
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('bcc@example.com');
 
-//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+$mail->addAttachment($obj->file, $obj->attachment_name);    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
 $mail->Subject = $obj->subject;
@@ -39,8 +38,8 @@ if (!$mail->send()) {
 	if ($obj->debug == true)
 	{
 		echo 'Message could not be sent.';
-		echo 'Error: ' . $mail->ErrorInfo;	
-	}		
+		echo 'Error: ' . $mail->ErrorInfo;
+	}
 } else {
     echo 'OK';
 }
