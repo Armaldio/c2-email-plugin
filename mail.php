@@ -25,7 +25,13 @@ $mail->addAddress($obj->recipient, $obj->recipient);     // Add a recipient
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('bcc@example.com');
 
-$mail->addAttachment($obj->file, $obj->attachment_name);    // Optional name
+$contact_image_data=$obj->file;
+$data = substr($contact_image_data, strpos($contact_image_data, ","));
+$filename=$obj->attachment_name;
+$encoding = "base64";
+$type = "image/png";
+$mail->AddStringAttachment(base64_decode($data), $filename, $encoding, $type);
+
 $mail->isHTML(true);                                  // Set email format to HTML
 
 $mail->Subject = $obj->subject;
