@@ -25,8 +25,8 @@ $mail->addAddress($obj->recipient, $obj->recipient);     // Add a recipient
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('bcc@example.com');
 
-$contact_image_data=$obj->file;
-$data = substr($contact_image_data, strpos($contact_image_data, ","));
+$image=$obj->file;
+$data = substr($image, strpos($image, ","));
 $filename=$obj->attachment_name;
 $encoding = "base64";
 $type = "image/png";
