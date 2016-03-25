@@ -28,9 +28,19 @@ $mail->addAddress($obj->recipient, $obj->recipient);     // Add a recipient
 $image=$obj->file;
 $data = substr($image, strpos($image, ","));
 $filename=$obj->attachment_name;
+
+<?php
+$filedata = base64_decode($data);
+
+$f = finfo_open();
+
+$mime_type = finfo_buffer($f, $filedata, FILEINFO_MIME_TYPE);
+echo $mime_type;
+
+
 $encoding = "base64";
 $type = "image/png";
-$mail->AddStringAttachment(base64_decode($data), $filename, $encoding, $type);
+$mail->AddStringAttachment($filedata, $filename, $encoding, $type);
 
 $mail->isHTML(true);                                  // Set email format to HTML
 
