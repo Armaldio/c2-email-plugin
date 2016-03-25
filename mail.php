@@ -29,14 +29,12 @@ $image=$obj->file;
 $data = substr($image, strpos($image, ","));
 $filename=$obj->attachment_name;
 
-<?php
 $filedata = base64_decode($data);
 
 $f = finfo_open();
 
 $mime_type = finfo_buffer($f, $filedata, FILEINFO_MIME_TYPE);
 echo $mime_type;
-
 
 $encoding = "base64";
 $type = "image/png";
