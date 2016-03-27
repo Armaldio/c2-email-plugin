@@ -1,5 +1,5 @@
 # c2-email-plugin
-This is a plugin for Construct 2 that allows developers to send emails through SMTP severs.
+This is a plugin for Construct 2 that allows developers to send emails through SMTP servers.
 
 ## Front-end
 The following files are used at the client side to integrate into Construct 2:
