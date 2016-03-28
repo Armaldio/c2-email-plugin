@@ -1,58 +1,63 @@
 <?php
-require 'phpmailer/PHPMailerAutoload.php';
+	require 'phpmailer/PHPMailerAutoload.php';
+	header('Access-Control-Allow-Origin: *');
 
-header('Access-Control-Allow-Origin: *');
+	// Read user input (sent from runtime.js as JSON object)
+	$json = file_get_contents('php://input');
+	$obj = json_decode($json);
 
-$json = file_get_contents('php://input');
-$obj = json_decode($json);
+	// Initialize new mail object
+	$mail = new PHPMailer;
 
-$mail = new PHPMailer;
+	// Enable verbose debug output
+	$mail->SMTPDebug = 3;
 
-$mail->SMTPDebug = 3;                               // Enable verbose debug output
+	// Inject user specified configurations
+	$mail->isSMTP();
+	$mail->Host = $obj->smtp_server;
+	$mail->SMTPAuth = true;
+	$mail->Username = $obj->from_mail;
+	$mail->Password = $obj->password;
+	$mail->SMTPSecure = $obj->security;
+	$mail->Port = $obj->port;
 
-$mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = $obj->smtp_server;  // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = $obj->from_mail;                 // SMTP username
-$mail->Password = $obj->password;                           // SMTP password
-$mail->SMTPSecure = $obj->security;                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = $obj->port;                                    // TCP port to connect to
+	// Set sender and recipient
+	$mail->setFrom($obj->from_mail, $obj->name_from);
+	$mail->addAddress($obj->recipient, $obj->recipient);
+	//$mail->addAddress('ellen@example.com');
+	//$mail->addReplyTo('info@example.com', 'Information');
+	//$mail->addCC('cc@example.com');
+	//$mail->addBCC('bcc@example.com');
 
-$mail->setFrom($obj->from_mail, $obj->name_from);
-$mail->addAddress($obj->recipient, $obj->recipient);     // Add a recipient
-//$mail->addAddress('ellen@example.com');               // Name is optional
-//$mail->addReplyTo('info@example.com', 'Information');
-//$mail->addCC('cc@example.com');
-//$mail->addBCC('bcc@example.com');
+	// Build attachment
+	$image=$obj->file;
+	$filename=$obj->attachment_name;
 
-$image=$obj->file;
-$data = substr($image, strpos($image, ","));
-$filename=$obj->attachment_name;
+	$data = substr($image, strpos($image, ","));
+	$filedata = base64_decode($data);
+	$f = finfo_open();
+	$mime_type = finfo_buffer($f, $filedata, FILEINFO_MIME_TYPE);
+	$encoding = "base64";
+	$type = $mime_type;
 
-$filedata = base64_decode($data);
+	// Attach if attachment exists
+	if ($filedata)
+		$mail->AddStringAttachment($filedata, $filename, $encoding, $type);
 
-$f = finfo_open();
+	// Set email format to HTML
+	$mail->isHTML(true);
+	$mail->Subject = $obj->subject;
+	$mail->Body    = $obj->body;
+	$mail->AltBody = $obj->body;
 
-$mime_type = finfo_buffer($f, $filedata, FILEINFO_MIME_TYPE);
-
-$encoding = "base64";
-$type = $mime_type;
-$mail->AddStringAttachment($filedata, $filename, $encoding, $type);
-
-$mail->isHTML(true);                                  // Set email format to HTML
-
-$mail->Subject = $obj->subject;
-$mail->Body    = $obj->body;
-$mail->AltBody = $obj->body;
-
-var_dump($obj);
-
-if (!$mail->send()) {
-	if ($obj->debug == true)
-	{
-		echo 'Message could not be sent.';
-		echo 'Error: ' . $mail->ErrorInfo;
+	// Send email and report back the result
+	if (!$mail->send()) {
+		if ($obj->debug == true)
+		{
+			echo 'Message could not be sent.';
+			echo 'Error: ' . $mail->ErrorInfo;
+		}
+	} else {
+	    echo 'OK';
 	}
-} else {
-    echo 'OK';
-}
+?>
