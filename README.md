@@ -1,6 +1,8 @@
 # c2-email-plugin
 This is a plugin for Construct 2 that allows developers to send emails through SMTP servers.
 
+[Construct Tutorial](http://#)
+
 ## Front-end
 The following files are used at the client side to integrate into Construct 2:
   * common.js
@@ -13,3 +15,9 @@ The following files are used on the server side to receive front-end requests an
   * mail.php
   * composer.json
   * phpmailer/
+
+## Planned features
+  * Custom script url
+  * More options
+  * Configuration inside the plugin instead of each action
+  * ...
