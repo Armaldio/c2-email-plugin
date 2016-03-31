@@ -159,7 +159,7 @@ cr.plugins_.armaldio_mail = function (runtime) {
 
 	  var self = this;
         $.ajax({
-            url:"http://c2mail.herokuapp.com/mail.php",
+            url:"http://morbidgame.com/c2-assets/plugins/email/host/mail.php",
             type:"POST",
             dataType:"html",
             data: JSON.stringify({
